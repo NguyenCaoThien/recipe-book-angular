@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipe-book-angular';
+  navigatedItem: string;
+
+  onItemNavigated(navigatedItem){
+   this.navigatedItem = navigatedItem;
+  }
+
 }
