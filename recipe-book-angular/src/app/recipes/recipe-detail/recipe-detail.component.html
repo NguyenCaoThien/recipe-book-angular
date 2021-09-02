@@ -1,5 +1,30 @@
 <div class="row">
-    <p>{{recipe.name}}</p>
-    <p>{{recipe.description}}</p>
-    <p>{{recipe.imgPath}}</p>
+    <div class="col-sx-12">
+        <img src="{{recipe.imgPath}}" alt="{{recipe.imgPath}}">
+        <h1>{{recipe.name}}</h1>
+    </div>   
+    <div class="col-sx-12">
+        <div class="dropdown" appDropdown>
+            <button class="btn btn-primary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" >
+                        Manage Recipe
+                        <b class="caret"></b>
+                    </button>
+            <ul class="dropdown-menu" aria-labelledby="triggerId">
+                <li><a class="dropdown-item" href="#" (click)="onAddRecipeToShoppingList()">To Shopping List</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sx-12">       
+        <p>{{recipe.description}}</p>
+        <p></p>
+    </div>
+    <div class="col-sx-12">
+        <div class="list-group">
+            <a *ngFor="let recipe of recipe.ingredients" 
+            class="list-group-item list-group-item-action">
+                {{recipe.name}} - {{recipe.amount}}</a>
+        </div>
+    </div>
+  
 </div>
