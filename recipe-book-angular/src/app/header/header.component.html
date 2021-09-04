@@ -14,8 +14,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#" (click)="onSelectRouteringItem('recipe')">Recipes</a></li>
-                <li><a href="#" (click)="onSelectRouteringItem('shoppinglist')">Shopping List</a></li>
+                <li routerLink="/recipes" routerLinkActive="active"><a style="cursor: pointer;">Recipes</a></li>
+                <li routerLink="/shopping-list" routerLinkActive="active"><a style="cursor: pointer;">Shopping List</a></li>
             </ul>           
             <ul class="nav navbar-nav navbar-right">              
                 <li class="dropdown" appDropdown>
