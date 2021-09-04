@@ -1,4 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Ingredient } from '../common/ingredient.model';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class ShoppingListService {
     new Ingredient("Apple", 5),
   ]
 
-  addedIngredient = new EventEmitter<Ingredient>();
+  addedIngredient = new Subject<Ingredient>();
 
   constructor() { }
   getIngredients(){
