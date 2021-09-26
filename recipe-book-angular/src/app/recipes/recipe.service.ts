@@ -1,9 +1,14 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Ingredient } from '../common/ingredient.model';
 import { ShoppingListService } from '../shopping-lists/shopping-list.service';
 import { Recipe } from './recipe.model';
 
-@Injectable()
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe("Sweet soup", "Sweet soup description", "https://d9aim9fbtsqsm.cloudfront.net/wp-content/uploads/2017/09/maxresdefault-2.jpg",
@@ -16,9 +21,10 @@ export class RecipeService {
     )  
   ]
 
+  recipeChanged= new Subject<Recipe[]>();
   constructor(private slService: ShoppingListService) { }
 
-  getRecipe(){
+  getRecipes(){
     return this.recipes.slice();
   }
 
@@ -28,5 +34,15 @@ export class RecipeService {
 
   addRecipeToShoppingList(recipe: Recipe){
     this.slService.addRecipeToShoppingList(recipe.ingredients);
+  }
+
+  updateRecipe(recipe: Recipe, index: number){
+    this.recipes[index]= new Recipe(recipe.name, recipe.description, recipe.imgPath, recipe.ingredients);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  addNewRecipe(recipe: Recipe){
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.getRecipes())
   }
 }

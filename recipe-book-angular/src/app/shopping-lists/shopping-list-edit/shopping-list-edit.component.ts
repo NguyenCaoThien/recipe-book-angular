@@ -46,6 +46,10 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
    this.ingreForm.reset();
   }
 
+  onClearIngredient(){
+    // TODO: clear ingredient
+  }
+
   onDeleteIngre(){
     this.shoppingListService.deleteIngredient(this.ingreEditedIndex);
     this.ingreForm.reset();
